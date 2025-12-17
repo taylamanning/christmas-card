@@ -262,9 +262,17 @@
   </footer>
 
   <script>
-    function revealMessage() {
-      document.getElementById('loveMessage').style.display = 'block';
-    }
+      function openCard() {
+    const content = document.getElementById('cardContent');
+    content.style.display = 'block'; // make it visible
+    content.style.opacity = '1';      // optional fade-in effect
+    // Scroll to the first section
+    document.getElementById('memories').scrollIntoView({ behavior: 'smooth' });
+  }
+
+  function revealMessage() {
+    document.getElementById('loveMessage').style.display = 'block';
+  }
   </script>
 
 </body>
