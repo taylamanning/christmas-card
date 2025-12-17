@@ -1,25 +1,13 @@
-/* Tells the browser: 'This is a modern HTML website' */
-
 <!DOCTYPE html>
 <html lang="en">
-
-  /* The head is where you put things that describe the page */
-  
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  /* Page title */
-  
   <title>Merry Christmas ❤️</title>
 
-  /* Downloads fonts from Google and makes them usable in your CSS */
-  
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
-  /* Style controls how things look */
-  
   <style>
     * {
       box-sizing: border-box;
@@ -27,8 +15,6 @@
       padding: 0;
     }
 
-    /* Body controls default font, background colour, text colour */
-    
     body {
       font-family: 'Poppins', sans-serif;
       background: linear-gradient(180deg, #0B3D2E, #145A44);
@@ -44,8 +30,6 @@
       text-align: center;
     }
 
-    /* Headings */
-    
     h1, h2 {
       font-family: 'Mountains of Christmas', cursive;
       margin-bottom: 20px;
@@ -65,8 +49,6 @@
       margin: 0 auto 20px;
     }
 
-    /* Buttons */
-    
     .btn {
       display: inline-block;
       padding: 12px 26px;
@@ -135,7 +117,26 @@
       text-align: center;
       font-size: 1.1rem;
     }
-  </style>
+  .media-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-top: 30px;
+    }
+
+    .media-grid img {
+      width: 100%;
+      border-radius: 18px;
+    }
+
+    .video-block {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .video-block video {
+      width: 100%;
 </head>
 <body>
 
@@ -148,24 +149,74 @@
 
   <!-- Memories -->
   <section id="memories">
-    <h2>Our Year Together</h2>
-    <p>Some of my favourite moments with you.</p>
+  <h2>How it started 🤍</h2>
+  <p>From the very beginning.</p>
 
-    <div class="cards">
-      <div class="card">
-        <img src="photo1.jpg" alt="Memory 1">
-        <p>Our first adventure together 🤍</p>
-      </div>
-      <div class="card">
-        <img src="photo2.jpg" alt="Memory 2">
-        <p>The day I realised I was falling for you</p>
-      </div>
-      <div class="card">
-        <img src="photo3.jpg" alt="Memory 3">
-        <p>Laughing until we couldn’t breathe</p>
-      </div>
-    </div>
-  </section>
+  <div class="media-grid">
+    <img src="photo1.jpg" alt="Memory 1">
+    <img src="photo2.jpg" alt="Memory 2">
+    <img src="photo3.jpg" alt="Memory 3">
+    <img src="photo4.jpg" alt="Memory 4">
+  </div>
+
+  <div class="video-block">
+    <video controls>
+      <source src="video1.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section>
+  <h2>Us being us ✨</h2>
+  <p>The everyday moments I love most.</p>
+
+  <div class="media-grid">
+    <img src="photo5.jpg" alt="Memory 5">
+    <img src="photo6.jpg" alt="Memory 6">
+    <img src="photo7.jpg" alt="Memory 7">
+    <img src="photo8.jpg" alt="Memory 8">
+  </div>
+
+  <div class="video-block">
+    <video controls>
+      <source src="video2.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section>
+  <h2>My favourite moments ❤️</h2>
+  <p>The memories I replay in my head.</p>
+
+  <div class="media-grid">
+    <img src="photo9.jpg" alt="Memory 9">
+    <img src="photo10.jpg" alt="Memory 10">
+    <img src="photo11.jpg" alt="Memory 11">
+    <img src="photo12.jpg" alt="Memory 12">
+  </div>
+
+  <div class="video-block">
+    <video controls>
+      <source src="video3.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
+
+<section>
+  <h2>Why I love you 💌</h2>
+  <p>And why I always will.</p>
+
+  <div class="media-grid">
+    <img src="photo13.jpg" alt="Memory 13">
+    <img src="photo14.jpg" alt="Memory 14">
+  </div>
+
+  <div class="video-block">
+    <video controls>
+      <source src="video4.mp4" type="video/mp4">
+    </video>
+  </div>
+</section>
 
   <!-- Video -->
   <section id="video">
