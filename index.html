@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Merry Christmas ❤️</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Rum+Raisin&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #FFF7F0;
+      color: #333;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    section {
+      padding: 80px 20px;
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+    }
+
+    h1, h2 {
+      font-family: 'Rum Raisin', cursive;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 3rem;
+    }
+
+    h2 {
+      font-size: 2.2rem;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 24px;
+      background: #E8B4BC;
+      color: #333;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 600;
+      transition: transform 0.2s ease, background 0.2s ease;
+    }
+
+    .btn:hover {
+      background: #d89ca6;
+      transform: translateY(-2px);
+    }
+
+    /* Timeline cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .card img {
+      width: 100%;
+      border-radius: 15px;
+      margin-bottom: 10px;
+    }
+
+    /* Video */
+    video {
+      width: 100%;
+      max-width: 700px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+      margin-top: 20px;
+    }
+
+    /* Reveal section */
+    .reveal-box {
+      background: #A3B18A;
+      color: white;
+      padding: 40px 20px;
+      border-radius: 20px;
+      margin-top: 30px;
+    }
+
+    .hidden-text {
+      display: none;
+      font-size: 1.2rem;
+      margin-top: 20px;
+    }
+
+    footer {
+      padding: 60px 20px;
+      text-align: center;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Landing -->
+  <section id="home">
+    <h1>Merry Christmas, my love ❤️</h1>
+    <p>I made you something special.</p>
+    <a href="#memories" class="btn">🎁 Open your card</a>
+  </section>
+
+  <!-- Memories -->
+  <section id="memories">
+    <h2>Our Year Together</h2>
+    <p>Some of my favourite moments with you.</p>
+
+    <div class="cards">
+      <div class="card">
+        <img src="photo1.jpg" alt="Memory 1">
+        <p>Our first adventure together 🤍</p>
+      </div>
+      <div class="card">
+        <img src="photo2.jpg" alt="Memory 2">
+        <p>The day I realised I was falling for you</p>
+      </div>
+      <div class="card">
+        <img src="photo3.jpg" alt="Memory 3">
+        <p>Laughing until we couldn’t breathe</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video -->
+  <section id="video">
+    <h2>A Little Message</h2>
+    <p>I wanted you to hear this from me.</p>
+    <video controls>
+      <source src="video.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+  </section>
+
+  <!-- Surprise -->
+  <section id="surprise">
+    <h2>One More Thing 💌</h2>
+    <div class="reveal-box">
+      <p>Click the button when you’re ready.</p>
+      <button class="btn" onclick="revealMessage()">Click me</button>
+      <div class="hidden-text" id="loveMessage">
+        I choose you. Every day. I’m so grateful for you and I can’t wait for everything that’s still to come ❤️
+      </div>
+    </div>
+  </section>
+
+  <!-- Ending -->
+  <footer>
+    <p>Here’s to many more Christmases together 🎄❤️</p>
+  </footer>
+
+  <script>
+    function revealMessage() {
+      document.getElementById('loveMessage').style.display = 'block';
+    }
+  </script>
+
+</body>
+</html>
