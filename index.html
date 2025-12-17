@@ -140,6 +140,19 @@
       max-width: 800px;
       border-radius: 20px;
     }
+
+    /* HIDE all card content initially */
+    #cardContent {
+      display: none;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    #cardContent.show {
+      display: block;
+      opacity: 1;
+    }
+    
     </style>
 </head>
 <body>
@@ -148,13 +161,15 @@
   <section id="home">
     <h1>Merry Christmas, my love ❤️</h1>
     <p>I made you something special.</p>
-    <a href="#memories" class="btn">🎁 Open your card</a>
+    <a class="btn" onclick="openCard()">🎁 Open your card</a>
   </section>
 
-  <!-- Memories -->
-  <section id="memories">
-  <h2>How it started 🤍</h2>
-  <p>From the very beginning.</p>
+   <!-- Hidden card content -->
+  <div id="cardContent">
+    <!-- Memories -->
+    <section id="memories">
+      <h2>How it started 🤍</h2>
+      <p>From the very beginning.</p>
 
   <div class="media-grid">
     <img src="photo1.JPG" alt="Memory 1">
