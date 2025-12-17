@@ -21,6 +21,7 @@
       color: #F8F5F2;
       line-height: 1.6;
       scroll-behavior: smooth;
+      position: relative;
     }
 
     section {
@@ -124,9 +125,50 @@
       opacity: 1;
     }
 
+    /* Twinkling lights */
+    #lights {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .light {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      opacity: 0;
+      animation: twinkle 2s infinite;
+    }
+
+    @keyframes twinkle {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+    /* Clickable hearts and stars */
+    .heart, .star {
+      position: absolute;
+      font-size: 24px;
+      pointer-events: none;
+      animation: floatUp 2s ease-out forwards;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(-100px) scale(1.5); opacity: 0; }
+    }
+
   </style>
 </head>
 <body>
+
+  <!-- Twinkling lights -->
+  <div id="lights"></div>
 
   <!-- Landing -->
   <section id="home">
@@ -188,7 +230,7 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video4.MOV" type="video/mp4">
+          <source src="video3.MOV" type="video/mp4">
         </video>
       </div>
     </section>
@@ -204,7 +246,7 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video3.MOV" type="video/mp4">
+          <source src="video4.MOV" type="video/mp4">
         </video>
       </div>
     </section>
@@ -253,6 +295,31 @@
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
     }
+
+    // Generate twinkling lights
+    const lightsContainer = document.getElementById('lights');
+    const colors = ['#FFD700','#FF4500','#00BFFF','#FF69B4','#ADFF2F']; 
+    for(let i=0; i<50; i++) {
+      const light = document.createElement('div');
+      light.classList.add('light');
+      light.style.top = Math.random() * 100 + '%';
+      light.style.left = Math.random() * 100 + '%';
+      light.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+      light.style.animationDuration = 1 + Math.random()*2 + 's'; 
+      lightsContainer.appendChild(light);
+    }
+
+    // Clickable hearts and stars
+    document.addEventListener('click', function(e){
+      const heartOrStar = document.createElement('div');
+      heartOrStar.classList.add(Math.random() < 0.5 ? 'heart' : 'star');
+      heartOrStar.style.left = e.pageX + 'px';
+      heartOrStar.style.top = e.pageY + 'px';
+      heartOrStar.style.color = ['#FF69B4','#FFD700','#FF4500'][Math.floor(Math.random()*3)];
+      heartOrStar.textContent = heartOrStar.classList.contains('heart') ? '❤️' : '⭐';
+      document.body.appendChild(heartOrStar);
+      setTimeout(() => heartOrStar.remove(), 2000); 
+    });
   </script>
 
 </body>
