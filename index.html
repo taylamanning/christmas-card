@@ -21,8 +21,14 @@
       color: #F8F5F2;
       line-height: 1.6;
       scroll-behavior: smooth;
+      position: relative;
     }
 
+    section, footer {
+      position: relative;
+      z-index: 1;
+    }
+    
     section {
       padding: 80px 20px;
       max-width: 900px;
@@ -95,6 +101,7 @@
       padding: 40px 20px;
       border-radius: 24px;
       margin-top: 30px;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
 
     .hidden-text {
@@ -115,11 +122,46 @@
       opacity: 0;
       transition: opacity 1s ease;
     }
+
+      #cardContent.show {
+      display: block;
+      opacity: 1;
+    }
+
+      /* Snow effect */
+    #snow {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .snowflake {
+      position: absolute;
+      top: -10px;
+      color: white;
+      font-size: 12px;
+      opacity: 0.8;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(100vh);
+      }
+    }
+    
   </style>
 </head>
 
 <body>
 
+  <!-- Snow container -->
+  <div id="snow"></div>
+  
   <!-- Landing -->
   <section id="home">
     <h1>A Little Christmas Surprise ❤️</h1>
@@ -218,6 +260,7 @@
   </div>
 
   <script>
+    // Show hidden card content
     function openCard() {
       const content = document.getElementById('cardContent');
       content.style.display = 'block';
@@ -227,9 +270,29 @@
       content.scrollIntoView({ behavior: 'smooth' });
     }
 
+    // Reveal the love message
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
     }
+
+    // Snow effect
+     const snowContainer = document.getElementById("snow");
+
+    function createSnowflake() {
+      const snowflake = document.createElement("div");
+      snowflake.className = "snowflake";
+      snowflake.textContent = "❄";
+      snowflake.style.left = Math.random() * 100 + "vw";
+      snowflake.style.animationDuration = 5 + Math.random() * 5 + "s";
+      snowflake.style.fontSize = 10 + Math.random() * 10 + "px";
+
+      snowContainer.appendChild(snowflake);
+
+      setTimeout(() => snowflake.remove(), 10000);
+    }
+
+    setInterval(createSnowflake, 300);
+    
   </script>
 
 </body>
