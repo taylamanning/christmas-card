@@ -142,9 +142,9 @@
     .snowflake {
       position: absolute;
       top: -10px;
-      color: white;
-      font-size: 12px;
-      opacity: 0.8;
+      color: rgba(255, 255, 255, 0.5);
+      font-size: 8px;
+      opacity: 0.6;
       animation: fall linear infinite;
     }
 
@@ -283,15 +283,16 @@
       snowflake.className = "snowflake";
       snowflake.textContent = "❄";
       snowflake.style.left = Math.random() * 100 + "vw";
-      snowflake.style.animationDuration = 5 + Math.random() * 5 + "s";
-      snowflake.style.fontSize = 10 + Math.random() * 10 + "px";
+      snowflake.style.animationDuration = 8 + Math.random() * 5 + "s";
+      snowflake.style.fontSize = 5 + Math.random() * 8 + "px";
+      snowflake.style.opacity = 0.4 + Math.random() * 0.4;
 
       snowContainer.appendChild(snowflake);
 
-      setTimeout(() => snowflake.remove(), 10000);
+      setTimeout(() => snowflake.remove(), 13000);
     }
 
-    setInterval(createSnowflake, 300);
+    setInterval(createSnowflake, 500);
     
   </script>
 
