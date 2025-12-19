@@ -22,15 +22,24 @@
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
+      position: relative;
+    }
+
+    /* 📜 Paper texture overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 1;
     }
 
     /* ❄️ Snow container */
     #snow {
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      inset: 0;
       pointer-events: none;
       z-index: 0;
     }
@@ -62,10 +71,18 @@
       letter-spacing: 1px;
     }
 
-    h1 { font-size: clamp(2.2rem, 6vw, 3rem); }
-    h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3rem);
+    }
 
-    p { max-width: 650px; margin: 0 auto 20px; }
+    h2 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
+
+    p {
+      max-width: 650px;
+      margin: 0 auto 20px;
+    }
 
     .btn {
       display: inline-block;
@@ -75,61 +92,39 @@
       border-radius: 999px;
       font-weight: 600;
       cursor: pointer;
-      transition: all 0.3s ease;
+      transition: all 0.2s ease;
       text-decoration: none;
-      position: relative;
-      overflow: hidden;
     }
 
-    /* Envelope-opening animation */
-    .btn::after {
-      content: '';
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0; left: 0;
-      background: #FFD700;
-      transform: scaleX(0);
-      transform-origin: left;
-      transition: transform 0.5s ease;
-      z-index: 1;
-      opacity: 0.3;
+    .btn:hover {
+      background: #8E0E1D;
+      transform: translateY(-2px);
     }
 
-    .btn:active::after {
-      transform: scaleX(1);
+    /* ✉️ Envelope opening animation */
+    .btn.opening {
+      animation: envelopeOpen 0.8s ease forwards;
     }
 
-    .btn span {
-      position: relative;
-      z-index: 2;
+    @keyframes envelopeOpen {
+      0% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(0.95); }
+      100% { transform: scale(1.2); opacity: 0; }
     }
 
-    /* 🎁 Card frame with paper texture */
+    /* 🎁 Card frame */
     #cardContent {
       display: none;
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 1s ease, transform 1s ease;
-      background: url('paper-texture.jpg') repeat;
-      background-size: cover;
+      background: rgba(255,255,255,0.06);
       border-radius: 32px;
       margin: 40px auto;
       padding: 20px 0;
       box-shadow: 0 20px 40px rgba(0,0,0,0.25);
       position: relative;
       z-index: 2;
-    }
-
-    /* Overlay to help text stand out */
-    #cardContent::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%; height: 100%;
-      background: rgba(255,255,255,0.05);
-      border-radius: 32px;
-      z-index: 1;
     }
 
     #cardContent.show {
@@ -143,8 +138,6 @@
       grid-template-columns: repeat(2, 1fr);
       gap: 18px;
       margin-top: 30px;
-      position: relative;
-      z-index: 2;
     }
 
     .media-grid img {
@@ -157,7 +150,6 @@
       max-width: 800px;
       border-radius: 20px;
       margin-top: 30px;
-      background: #000;
     }
 
     .reveal-box {
@@ -165,8 +157,6 @@
       padding: 40px 20px;
       border-radius: 24px;
       margin-top: 30px;
-      position: relative;
-      z-index: 2;
     }
 
     .hidden-text {
@@ -182,6 +172,34 @@
       position: relative;
       z-index: 2;
     }
+
+    /* 📱 Mobile tweaks */
+    @media (max-width: 600px) {
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      section {
+        padding: 60px 16px;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+      }
+    }
+
+    /* 🎄 Center opening like a card */
+    #home {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
   </style>
 </head>
 
@@ -194,7 +212,7 @@
   <section id="home">
     <h1>Merry Christmas ❤️</h1>
     <p>Just like a real Christmas card — open when you’re ready.</p>
-    <a class="btn" onclick="openCard()"><span>🎁 Open your card</span></a>
+    <a class="btn" id="openBtn" onclick="openCard()">✉️ Open your card</a>
   </section>
 
   <!-- Card Content -->
@@ -205,7 +223,7 @@
       <p>
         This year gave me so many reasons to smile — but you’re my favourite one.
         Every memory below is something I’m grateful for, and the best part is knowing
-        there are so many more still to come. Here is a special Christmas card, made just for you.
+        there are so many more still to come.
       </p>
       <p><strong>Christmas 2025 ❤️</strong></p>
     </section>
@@ -214,55 +232,56 @@
       <h2>🎄 Where it all began</h2>
       <p>When everything started to feel like home.</p>
       <div class="media-grid">
-        <img src="photo1.JPG">
-        <img src="photo2.jpeg">
-        <img src="photo3.jpeg">
-        <img src="photo4.jpeg">
+        <img src="photo1.JPG" alt="Memory 1">
+        <img src="photo2.jpeg" alt="Memory 2">
+        <img src="photo3.jpeg" alt="Memory 3">
+        <img src="photo4.jpeg" alt="Memory 4">
       </div>
-      <video controls poster="video2-poster.jpg"><source src="video2.MOV" type="video/mp4"></video>
+      <video controls poster="poster1.jpg"><source src="video2.MOV" type="video/mp4"></video>
     </section>
 
     <section>
       <h2>✨ Little moments</h2>
       <p>The everyday things that mean everything.</p>
       <div class="media-grid">
-        <img src="photo5.JPG">
-        <img src="photo6.jpeg">
-        <img src="photo7.jpeg">
-        <img src="photo8.jpeg">
+        <img src="photo5.JPG" alt="Memory 5">
+        <img src="photo6.jpeg" alt="Memory 6">
+        <img src="photo7.jpeg" alt="Memory 7">
+        <img src="photo8.jpeg" alt="Memory 8">
       </div>
-      <video controls poster="video1-poster.jpg"><source src="video1.MOV" type="video/mp4"></video>
+      <video controls poster="poster2.jpg"><source src="video1.MOV" type="video/mp4"></video>
     </section>
 
     <section>
       <h2>❤️ My favourite memories</h2>
       <p>On repeat in my mind this Christmas.</p>
       <div class="media-grid">
-        <img src="photo9.JPG">
-        <img src="photo10.jpeg">
-        <img src="photo11.JPG">
-        <img src="photo12.jpeg">
+        <img src="photo9.JPG" alt="Memory 9">
+        <img src="photo10.jpeg" alt="Memory 10">
+        <img src="photo11.JPG" alt="Memory 11">
+        <img src="photo12.jpeg" alt="Memory 12">
       </div>
-      <video controls poster="video4-poster.jpg"><source src="video4.MOV" type="video/mp4"></video>
+      <video controls poster="poster3.jpg"><source src="video4.MOV" type="video/mp4"></video>
     </section>
 
     <section>
       <h2>🎁 What I’m grateful for</h2>
       <p>My favourite gift.</p>
       <div class="media-grid">
-        <img src="photo13.jpeg">
-        <img src="photo14.jpeg">
+        <img src="photo13.jpeg" alt="Memory 13">
+        <img src="photo14.jpeg" alt="Memory 14">
       </div>
-      <video controls poster="video3-poster.jpg"><source src="video3.MOV" type="video/mp4"></video>
+      <video controls poster="poster4.jpg"><source src="video3.MOV" type="video/mp4"></video>
     </section>
 
     <section>
       <h2>💌 One more thing</h2>
       <div class="reveal-box">
         <p>Open this last little gift.</p>
-        <button class="btn" onclick="revealMessage()"><span>Click me</span></button>
+        <button class="btn" onclick="revealMessage()">Click me</button>
         <div class="hidden-text" id="loveMessage">
-          Merry Christmas! Thank you for being the amazing person that you are. I am so lucky. I love you - today and always ❤️🎄
+          Merry Christmas! Thank you for being the amazing person that you are.
+          I am so lucky to love you — today and always ❤️🎄
         </div>
       </div>
     </section>
@@ -277,11 +296,20 @@
   <script>
     function openCard() {
       const content = document.getElementById('cardContent');
-      content.style.display = 'block';
-      setTimeout(() => content.classList.add('show'), 50);
-      content.scrollIntoView({ behavior: 'smooth' });
+      const button = document.getElementById('openBtn');
 
-      startSnow(); // ❄️ start snow only now
+      // Envelope-opening animation
+      button.classList.add('opening');
+
+      setTimeout(() => {
+        button.style.display = 'none';
+        content.style.display = 'block';
+        setTimeout(() => content.classList.add('show'), 50);
+        content.scrollIntoView({ behavior: 'smooth' });
+
+        // Start snow effect
+        startSnow();
+      }, 600);
     }
 
     function revealMessage() {
@@ -294,14 +322,14 @@
       const snowflakes = 40;
 
       for (let i = 0; i < snowflakes; i++) {
-        const snowflake = document.createElement('div');
-        snowflake.className = 'snowflake';
-        snowflake.textContent = '❄';
-        snowflake.style.left = Math.random() * 100 + 'vw';
-        snowflake.style.animationDuration = 12 + Math.random() * 10 + 's';
-        snowflake.style.fontSize = 8 + Math.random() * 10 + 'px';
-        snowflake.style.opacity = Math.random();
-        snowContainer.appendChild(snowflake);
+        const flake = document.createElement('div');
+        flake.className = 'snowflake';
+        flake.textContent = '❄';
+        flake.style.left = Math.random() * 100 + 'vw';
+        flake.style.animationDuration = 12 + Math.random() * 10 + 's';
+        flake.style.fontSize = 8 + Math.random() * 10 + 'px';
+        flake.style.opacity = Math.random();
+        snowContainer.appendChild(flake);
       }
     }
   </script>
