@@ -62,13 +62,14 @@
       letter-spacing: 1px;
     }
 
-  h1 {
-  font-size: clamp(2.2rem, 6vw, 3rem);
-}
+    /* ✅ Responsive heading sizes */
+    h1 {
+      font-size: clamp(2.2rem, 6vw, 3rem);
+    }
 
-h2 {
-  font-size: clamp(1.6rem, 5vw, 2.2rem);
-}
+    h2 {
+      font-size: clamp(1.6rem, 5vw, 2.2rem);
+    }
 
     p {
       max-width: 650px;
@@ -125,9 +126,11 @@ h2 {
       border-radius: 18px;
     }
 
+    /* ✅ Extra-safe responsive video */
     video {
       width: 100%;
       max-width: 800px;
+      height: auto;
       border-radius: 20px;
       margin-top: 30px;
     }
@@ -152,6 +155,26 @@ h2 {
       position: relative;
       z-index: 2;
     }
+
+    /* 📱 MOBILE TWEAKS */
+    @media (max-width: 600px) {
+      section {
+        padding: 60px 16px;
+      }
+
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
+      p {
+        font-size: 0.95rem;
+      }
+
+      .btn {
+        padding: 10px 22px;
+        font-size: 0.95rem;
+      }
+    }
   </style>
 </head>
 
@@ -175,7 +198,7 @@ h2 {
       <p>
         This year gave me so many reasons to smile — but you’re my favourite one.
         Every memory below is something I’m grateful for, and the best part is knowing
-        there are so many more still to come. Here is a special Christmas card, made just for you. 
+        there are so many more still to come.
       </p>
       <p><strong>Christmas 2025 ❤️</strong></p>
     </section>
@@ -232,7 +255,8 @@ h2 {
         <p>Open this last little gift.</p>
         <button class="btn" onclick="revealMessage()">Click me</button>
         <div class="hidden-text" id="loveMessage">
-          Merry Christmas! Thank you for being the amazing person that you are. I am so lucky. I love you - today and always ❤️🎄
+          Merry Christmas! Thank you for being the amazing person that you are.
+          I am so lucky. I love you — today and always ❤️🎄
         </div>
       </div>
     </section>
@@ -250,8 +274,7 @@ h2 {
       content.style.display = 'block';
       setTimeout(() => content.classList.add('show'), 50);
       content.scrollIntoView({ behavior: 'smooth' });
-
-      startSnow(); // ❄️ start snow ONLY now
+      startSnow();
     }
 
     function revealMessage() {
