@@ -24,7 +24,7 @@
       overflow-x: hidden;
     }
 
-    /* ❄️ SNOW CONTAINER */
+    /* ❄️ Snow container */
     #snow {
       position: fixed;
       top: 0;
@@ -40,15 +40,11 @@
       top: -10px;
       color: rgba(255,255,255,0.8);
       font-size: 10px;
-      animation-name: fall;
-      animation-timing-function: linear;
-      animation-iteration-count: infinite;
+      animation: fall linear infinite;
     }
 
     @keyframes fall {
-      to {
-        transform: translateY(110vh);
-      }
+      to { transform: translateY(110vh); }
     }
 
     section {
@@ -91,7 +87,7 @@
       transform: translateY(-2px);
     }
 
-    /* 🎁 CARD FRAME */
+    /* 🎁 Card frame */
     #cardContent {
       display: none;
       opacity: 0;
@@ -156,7 +152,7 @@
 
 <body>
 
-  <!-- ❄️ Snow -->
+  <!-- ❄️ Snow (empty until card opens) -->
   <div id="snow"></div>
 
   <!-- Landing -->
@@ -240,6 +236,7 @@
       <p>Merry Christmas ❤️</p>
       <p>All my love, always — Tayla 🎄</p>
     </footer>
+
   </div>
 
   <script>
@@ -248,25 +245,29 @@
       content.style.display = 'block';
       setTimeout(() => content.classList.add('show'), 50);
       content.scrollIntoView({ behavior: 'smooth' });
+
+      startSnow(); // ❄️ start snow ONLY now
     }
 
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
     }
 
-    /* ❄️ Snow generator (soft & slow) */
-    const snowContainer = document.getElementById('snow');
-    const snowflakes = 40;
+    /* ❄️ Snow generator */
+    function startSnow() {
+      const snowContainer = document.getElementById('snow');
+      const snowflakes = 40;
 
-    for (let i = 0; i < snowflakes; i++) {
-      const snowflake = document.createElement('div');
-      snowflake.className = 'snowflake';
-      snowflake.textContent = '❄';
-      snowflake.style.left = Math.random() * 100 + 'vw';
-      snowflake.style.animationDuration = 10 + Math.random() * 10 + 's';
-      snowflake.style.fontSize = 8 + Math.random() * 10 + 'px';
-      snowflake.style.opacity = Math.random();
-      snowContainer.appendChild(snowflake);
+      for (let i = 0; i < snowflakes; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.textContent = '❄';
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = 12 + Math.random() * 10 + 's';
+        snowflake.style.fontSize = 8 + Math.random() * 10 + 'px';
+        snowflake.style.opacity = Math.random();
+        snowContainer.appendChild(snowflake);
+      }
     }
   </script>
 
