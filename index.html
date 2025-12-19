@@ -21,16 +21,10 @@
       color: #F8F5F2;
       line-height: 1.6;
       scroll-behavior: smooth;
-      position: relative;
     }
 
-    section, footer {
-      position: relative;
-      z-index: 1;
-    }
-    
     section {
-      padding: 80px 20px;
+      padding: 70px 20px;
       max-width: 900px;
       margin: auto;
       text-align: center;
@@ -38,20 +32,15 @@
 
     h1, h2 {
       font-family: 'Mountains of Christmas', cursive;
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       letter-spacing: 1px;
     }
 
-    h1 {
-      font-size: 3rem;
-    }
-
-    h2 {
-      font-size: 2.2rem;
-    }
+    h1 { font-size: 3rem; }
+    h2 { font-size: 2.2rem; }
 
     p {
-      max-width: 600px;
+      max-width: 650px;
       margin: 0 auto 20px;
     }
 
@@ -60,16 +49,35 @@
       padding: 12px 26px;
       background: #B11226;
       color: #F8F5F2;
-      text-decoration: none;
       border-radius: 999px;
       font-weight: 600;
       cursor: pointer;
-      transition: transform 0.2s ease, background 0.2s ease;
+      transition: all 0.2s ease;
+      text-decoration: none;
     }
 
     .btn:hover {
       background: #8E0E1D;
       transform: translateY(-2px);
+    }
+
+    /* Card frame */
+    #cardContent {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 1s ease, transform 1s ease;
+      background: rgba(255,255,255,0.06);
+      border-radius: 32px;
+      margin: 40px auto;
+      padding: 20px 0;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+    }
+
+    #cardContent.show {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
     }
 
     .media-grid {
@@ -90,7 +98,7 @@
       justify-content: center;
     }
 
-    .video-block video {
+    video {
       width: 100%;
       max-width: 800px;
       border-radius: 20px;
@@ -101,7 +109,6 @@
       padding: 40px 20px;
       border-radius: 24px;
       margin-top: 30px;
-      box-shadow: 0 15px 35px rgba(0,0,0,0.25);
     }
 
     .hidden-text {
@@ -115,66 +122,36 @@
       text-align: center;
       font-size: 1.1rem;
     }
-
-    /* Hide card content initially */
-    #cardContent {
-      display: none;
-      opacity: 0;
-      transition: opacity 1s ease;
-    }
-
-      #cardContent.show {
-      display: block;
-      opacity: 1;
-    }
-
-      /* Snow effect */
-    #snow {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .snowflake {
-      position: absolute;
-      top: -10px;
-      color: rgba(255, 255, 255, 0.5);
-      font-size: 8px;
-      opacity: 0.6;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      to {
-        transform: translateY(100vh);
-      }
-    }
-    
   </style>
 </head>
 
 <body>
 
-  <!-- Snow container -->
-  <div id="snow"></div>
-  
   <!-- Landing -->
   <section id="home">
-    <h1>A Little Christmas Surprise ❤️</h1>
-    <p>I made something special, just for you.</p>
-    <button class="btn" onclick="openCard()">🎁 Open Me!</button>
+    <h1>Merry Christmas, my love ❤️</h1>
+    <p>Just like a real Christmas card — open when you’re ready.</p>
+    <a class="btn" onclick="openCard()">🎁 Open your card</a>
   </section>
 
-  <!-- Hidden card content -->
+  <!-- Card Content -->
   <div id="cardContent">
 
+    <!-- Letter -->
+    <section>
+      <h2>Dear you,</h2>
+      <p>
+        This year gave me so many reasons to smile — but you’re my favourite one.
+        Every memory below is something I’m grateful for, and the best part is knowing
+        there are so many more still to come.
+      </p>
+      <p><strong>Christmas 2025 — with you ❤️</strong></p>
+    </section>
+
+    <!-- Section 1 -->
     <section id="memories">
-      <h2>How it started 🤍</h2>
-      <p>From the very beginning.</p>
+      <h2>🎄 The year we began</h2>
+      <p>Where everything started to feel like home.</p>
 
       <div class="media-grid">
         <img src="photo1.JPG">
@@ -185,14 +162,15 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video2.MOV" type="video/mp4">
+          <source src="video1.MOV" type="video/mp4">
         </video>
       </div>
     </section>
 
+    <!-- Section 2 -->
     <section>
-      <h2>Just Us ✨</h2>
-      <p>The little moments that I love the most.</p>
+      <h2>✨ Little moments</h2>
+      <p>The everyday things that meant everything.</p>
 
       <div class="media-grid">
         <img src="photo5.JPG">
@@ -203,14 +181,15 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video1.MOV" type="video/mp4">
+          <source src="video2.MOV" type="video/mp4">
         </video>
       </div>
     </section>
 
+    <!-- Section 3 -->
     <section>
-      <h2>My favourite moments ❤️</h2>
-      <p>The memories that feel like home.</p>
+      <h2>❤️ My favourite memories</h2>
+      <p>The ones I replay in my head when I miss you.</p>
 
       <div class="media-grid">
         <img src="photo9.JPG">
@@ -221,14 +200,15 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video4.MOV" type="video/mp4">
+          <source src="video3.MOV" type="video/mp4">
         </video>
       </div>
     </section>
 
+    <!-- Section 4 -->
     <section>
-      <h2>I love you 💌</h2>
-      <p>And I always will.</p>
+      <h2>🎁 What I’m grateful for</h2>
+      <p>You — today, this Christmas, and always.</p>
 
       <div class="media-grid">
         <img src="photo13.jpeg">
@@ -237,63 +217,43 @@
 
       <div class="video-block">
         <video controls>
-          <source src="video3.MOV" type="video/mp4">
+          <source src="video4.MOV" type="video/mp4">
         </video>
       </div>
     </section>
 
-    <section id="surprise">
-      <h2>One More Thing 💌</h2>
+    <!-- Surprise -->
+    <section>
+      <h2>💌 One more thing</h2>
       <div class="reveal-box">
-        <p>Click the button when you’re ready.</p>
+        <p>Open this last little gift.</p>
         <button class="btn" onclick="revealMessage()">Click me</button>
         <div class="hidden-text" id="loveMessage">
-          On the coldest nights and the busiest days, you're the person who makes everything feel calm and bright. Loving you is my favourite part of Christmas. And my favourite part of every day ❤️
+          Merry Christmas, my love. Thank you for being my safe place, my favourite person,
+          and the best part of every day. I choose you — always ❤️🎄
         </div>
       </div>
     </section>
 
+    <!-- Sign off -->
     <footer>
-      <p>Here’s to many more Christmases together 🎄❤️</p>
+      <p>Merry Christmas ❤️</p>
+      <p>All my love, always — Tayla 🎄</p>
     </footer>
 
   </div>
 
   <script>
-    // Show hidden card content
     function openCard() {
       const content = document.getElementById('cardContent');
       content.style.display = 'block';
-      setTimeout(() => {
-        content.style.opacity = '1';
-      }, 50);
+      setTimeout(() => content.classList.add('show'), 50);
       content.scrollIntoView({ behavior: 'smooth' });
     }
 
-    // Reveal the love message
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
     }
-
-    // Snow effect
-     const snowContainer = document.getElementById("snow");
-
-    function createSnowflake() {
-      const snowflake = document.createElement("div");
-      snowflake.className = "snowflake";
-      snowflake.textContent = "❄";
-      snowflake.style.left = Math.random() * 100 + "vw";
-      snowflake.style.animationDuration = 8 + Math.random() * 5 + "s";
-      snowflake.style.fontSize = 5 + Math.random() * 8 + "px";
-      snowflake.style.opacity = 0.4 + Math.random() * 0.4;
-
-      snowContainer.appendChild(snowflake);
-
-      setTimeout(() => snowflake.remove(), 13000);
-    }
-
-    setInterval(createSnowflake, 500);
-    
   </script>
 
 </body>
