@@ -20,6 +20,17 @@
       overflow-x: hidden;
     }
 
+        /* 📜 Paper texture overlay */
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+      opacity: 0.12;
+      pointer-events: none;
+      z-index: 1;
+    }
+    
     section {
       padding: 70px 20px;
       max-width: 900px;
