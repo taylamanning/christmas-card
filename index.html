@@ -9,11 +9,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: 'Poppins', sans-serif;
@@ -22,38 +18,6 @@
       line-height: 1.6;
       scroll-behavior: smooth;
       overflow-x: hidden;
-      position: relative;
-    }
-
-    /* 📜 Paper texture overlay */
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-      opacity: 0.12;
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    /* ❄️ Snow container */
-    #snow {
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .snowflake {
-      position: absolute;
-      top: -10px;
-      color: rgba(255,255,255,0.8);
-      font-size: 10px;
-      animation: fall linear infinite;
-    }
-
-    @keyframes fall {
-      to { transform: translateY(110vh); }
     }
 
     section {
@@ -71,18 +35,10 @@
       letter-spacing: 1px;
     }
 
-    h1 {
-      font-size: clamp(2.2rem, 6vw, 3rem);
-    }
+    h1 { font-size: clamp(2.2rem, 6vw, 3rem); }
+    h2 { font-size: clamp(1.6rem, 5vw, 2.2rem); }
 
-    h2 {
-      font-size: clamp(1.6rem, 5vw, 2.2rem);
-    }
-
-    p {
-      max-width: 650px;
-      margin: 0 auto 20px;
-    }
+    p { max-width: 650px; margin: 0 auto 20px; }
 
     .btn {
       display: inline-block;
@@ -96,23 +52,8 @@
       text-decoration: none;
     }
 
-    .btn:hover {
-      background: #8E0E1D;
-      transform: translateY(-2px);
-    }
+    .btn:hover { background: #8E0E1D; transform: translateY(-2px); }
 
-    /* ✉️ Envelope opening animation */
-    .btn.opening {
-      animation: envelopeOpen 0.8s ease forwards;
-    }
-
-    @keyframes envelopeOpen {
-      0% { transform: scale(1); opacity: 1; }
-      50% { transform: scale(0.95); }
-      100% { transform: scale(1.2); opacity: 0; }
-    }
-
-    /* 🎁 Card frame */
     #cardContent {
       display: none;
       opacity: 0;
@@ -127,11 +68,7 @@
       z-index: 2;
     }
 
-    #cardContent.show {
-      display: block;
-      opacity: 1;
-      transform: translateY(0);
-    }
+    #cardContent.show { display: block; opacity: 1; transform: translateY(0); }
 
     .media-grid {
       display: grid;
@@ -140,16 +77,14 @@
       margin-top: 30px;
     }
 
-    .media-grid img {
-      width: 100%;
-      border-radius: 18px;
-    }
+    .media-grid img { width: 100%; border-radius: 18px; }
 
     video {
       width: 100%;
       max-width: 800px;
       border-radius: 20px;
       margin-top: 30px;
+      background: #000;
     }
 
     .reveal-box {
@@ -159,11 +94,7 @@
       margin-top: 30px;
     }
 
-    .hidden-text {
-      display: none;
-      font-size: 1.2rem;
-      margin-top: 20px;
-    }
+    .hidden-text { display: none; font-size: 1.2rem; margin-top: 20px; }
 
     footer {
       padding: 60px 20px;
@@ -172,47 +103,16 @@
       position: relative;
       z-index: 2;
     }
-
-    /* 📱 Mobile tweaks */
-    @media (max-width: 600px) {
-      .media-grid {
-        grid-template-columns: 1fr;
-      }
-
-      section {
-        padding: 60px 16px;
-      }
-
-      p {
-        font-size: 0.95rem;
-      }
-
-      .btn {
-        padding: 10px 22px;
-        font-size: 0.95rem;
-      }
-    }
-
-    /* 🎄 Center opening like a card */
-    #home {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
   </style>
 </head>
 
 <body>
 
-  <!-- ❄️ Snow -->
-  <div id="snow"></div>
-
   <!-- Landing -->
   <section id="home">
     <h1>Merry Christmas ❤️</h1>
     <p>Just like a real Christmas card — open when you’re ready.</p>
-    <a class="btn" id="openBtn" onclick="openCard()">✉️ Open your card</a>
+    <a class="btn" onclick="openCard()">🎁 Open your card</a>
   </section>
 
   <!-- Card Content -->
@@ -223,7 +123,7 @@
       <p>
         This year gave me so many reasons to smile — but you’re my favourite one.
         Every memory below is something I’m grateful for, and the best part is knowing
-        there are so many more still to come.
+        there are so many more still to come. Here is a special Christmas card, made just for you. 
       </p>
       <p><strong>Christmas 2025 ❤️</strong></p>
     </section>
@@ -237,7 +137,7 @@
         <img src="photo3.jpeg">
         <img src="photo4.jpeg">
       </div>
-      <video controls><source src="video2.MOV" type="video/mp4"></video>
+      <video controls playsinline poster="video2-poster.jpeg"><source src="video2.MOV" type="video/mp4"></video>
     </section>
 
     <section>
@@ -249,7 +149,7 @@
         <img src="photo7.jpeg">
         <img src="photo8.jpeg">
       </div>
-      <video controls><source src="video1.MOV" type="video/mp4"></video>
+      <video controls playsinline poster="video1-poster.jpeg"><source src="video1.MOV" type="video/mp4"></video>
     </section>
 
     <section>
@@ -261,7 +161,7 @@
         <img src="photo11.JPG">
         <img src="photo12.jpeg">
       </div>
-      <video controls><source src="video4.MOV" type="video/mp4"></video>
+      <video controls playsinline poster="video4-poster.jpg"><source src="video4.MOV" type="video/mp4"></video>
     </section>
 
     <section>
@@ -271,7 +171,7 @@
         <img src="photo13.jpeg">
         <img src="photo14.jpeg">
       </div>
-      <video controls><source src="video3.MOV" type="video/mp4"></video>
+      <video controls playsinline poster="video3-poster.jpeg"><source src="video3.MOV" type="video/mp4"></video>
     </section>
 
     <section>
@@ -280,8 +180,7 @@
         <p>Open this last little gift.</p>
         <button class="btn" onclick="revealMessage()">Click me</button>
         <div class="hidden-text" id="loveMessage">
-          Merry Christmas! Thank you for being the amazing person that you are.
-          I am so lucky to love you — today and always ❤️🎄
+          Merry Christmas! Thank you for being the amazing person that you are. I am so lucky. I love you - today and always ❤️🎄
         </div>
       </div>
     </section>
@@ -296,38 +195,13 @@
   <script>
     function openCard() {
       const content = document.getElementById('cardContent');
-      const button = document.getElementById('openBtn');
-
-      button.classList.add('opening');
-
-      setTimeout(() => {
-        button.style.display = 'none';
-        content.style.display = 'block';
-        setTimeout(() => content.classList.add('show'), 50);
-        content.scrollIntoView({ behavior: 'smooth' });
-        startSnow();
-      }, 600);
+      content.style.display = 'block';
+      setTimeout(() => content.classList.add('show'), 50);
+      content.scrollIntoView({ behavior: 'smooth' });
     }
 
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
-    }
-
-    /* ❄️ Snow generator */
-    function startSnow() {
-      const snowContainer = document.getElementById('snow');
-      const snowflakes = 40;
-
-      for (let i = 0; i < snowflakes; i++) {
-        const flake = document.createElement('div');
-        flake.className = 'snowflake';
-        flake.textContent = '❄';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.animationDuration = 12 + Math.random() * 10 + 's';
-        flake.style.fontSize = 8 + Math.random() * 10 + 'px';
-        flake.style.opacity = Math.random();
-        snowContainer.appendChild(flake);
-      }
     }
   </script>
 
