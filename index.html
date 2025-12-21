@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Merry Christmas ❤️</title>
+  <meta charset="UTF-8" /> /* Allows emojis and special characters to display correctly */
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> /* Makes the site responsive on phones and tablets */
+  <title>Merry Christmas ❤️</title> /* The text shown in the broswer tab */
 
+  /* Imports the fonts */
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 
   <style>
+    /* Removes default browser spacing, makes layouts predictable */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -16,13 +18,13 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(180deg, #0B3D2E, #145A44);
-      color: #F8F5F2;
+      font-family: 'Poppins', sans-serif; /* sets font */
+      background: linear-gradient(180deg, #0B3D2E, #145A44); /* dark green christmas gradient */
+      color: #F8F5F2; /* cream text colour */
       line-height: 1.6;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-      position: relative;
+      scroll-behavior: smooth; /* smooth scrolling */
+      overflow-x: hidden; /* prevents sideways scrolling */
+      position: relative; /* allows layered effects */
     }
 
     /* 📜 Paper texture overlay */
@@ -32,8 +34,8 @@
       inset: 0;
       background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
       opacity: 0.12;
-      pointer-events: none;
-      z-index: 1;
+      pointer-events: none; /* doesn't block clicking */
+      z-index: 1; /* sits above background, below content */
     }
 
     /* ❄️ Snow container */
@@ -41,19 +43,19 @@
       position: fixed;
       inset: 0;
       pointer-events: none;
-      z-index: 0;
+      z-index: 0; /* always behind content */
     }
 
     .snowflake {
       position: absolute;
-      top: -10px;
+      top: -10px; /* start slightly above the screen */
       color: rgba(255,255,255,0.8);
       font-size: 10px;
       animation: fall linear infinite;
     }
 
     @keyframes fall {
-      to { transform: translateY(110vh); }
+      to { transform: translateY(110vh); } /* animates snow falling past the bottom of the screen */
     }
 
     section {
@@ -65,12 +67,14 @@
       z-index: 2;
     }
 
+    /* festive font for headings only */
     h1, h2 {
       font-family: 'Mountains of Christmas', cursive;
       margin-bottom: 16px;
       letter-spacing: 1px;
     }
 
+    /* makes text scale smoothly on phones -> laptops */
     h1 {
       font-size: clamp(2.2rem, 6vw, 3rem);
     }
@@ -96,6 +100,7 @@
       text-decoration: none;
     }
 
+    /* slight lift on hover */
     .btn:hover {
       background: #8E0E1D;
       transform: translateY(-2px);
@@ -106,6 +111,7 @@
       animation: envelopeOpen 0.8s ease forwards;
     }
 
+    /* shrinks slightly -> grows -> fades out */
     @keyframes envelopeOpen {
       0% { transform: scale(1); opacity: 1; }
       50% { transform: scale(0.95); }
@@ -113,6 +119,7 @@
     }
 
     /* 🎁 Card frame */
+    /* card is invisible at first */
     #cardContent {
       display: none;
       opacity: 0;
@@ -127,12 +134,14 @@
       z-index: 2;
     }
 
+    /* smooth fade + slide in when opened */
     #cardContent.show {
       display: block;
       opacity: 1;
       transform: translateY(0);
     }
 
+    /* 2-column photo layout on desktop */
     .media-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -159,6 +168,7 @@
       margin-top: 30px;
     }
 
+    /* keeps message hidden until clicked */
     .hidden-text {
       display: none;
       font-size: 1.2rem;
@@ -173,7 +183,7 @@
       z-index: 2;
     }
 
-    /* 📱 Mobile tweaks */
+    /* 📱 Mobile tweaks - switches to 1 column on mobile */
     @media (max-width: 600px) {
       .media-grid {
         grid-template-columns: 1fr;
@@ -237,7 +247,7 @@
         <img src="photo3.jpeg" alt="Memory 3">
         <img src="photo4.jpeg" alt="Memory 4">
       </div>
-      <video controls playsinline poster="video2-poster.jpeg"><source src="video2.MOV" type="video/mp4"></video>
+      <video controls playsinline poster="video2-poster.jpeg"><source src="video2.MOV" type="video/mp4"></video> /* Controls = play/pause buttons, playsinline = plays inside the page on mobile (not fullscreen), poster = preview image */
     </section>
 
     <section>
@@ -313,6 +323,7 @@
       }, 600);
     }
 
+    /* reveals the final message + video when button is pressed */
     function revealMessage() {
       document.getElementById('loveMessage').style.display = 'block';
     }
@@ -322,14 +333,15 @@
       const snowContainer = document.getElementById('snow');
       const snowflakes = 40;
 
-      for (let i = 0; i < snowflakes; i++) {
+      /* Creates 40 snowflakes with random size, speed, opacity, horizontal position */
+      for (let i = 0; i < snowflakes; i++) /* this is a loop, it runs once for each snowflake */ {
         const flake = document.createElement('div');
         flake.className = 'snowflake';
         flake.textContent = '❄';
-        flake.style.left = Math.random() * 100 + 'vw';
-        flake.style.animationDuration = 12 + Math.random() * 10 + 's';
-        flake.style.fontSize = 8 + Math.random() * 10 + 'px';
-        flake.style.opacity = Math.random();
+        flake.style.left = Math.random() * 100 + 'vw'; /* sets a random position across the screen */
+        flake.style.animationDuration = 12 + Math.random() * 10 + 's'; /* sets random falling speed */
+        flake.style.fontSize = 8 + Math.random() * 10 + 'px'; /* sets random size */
+        flake.style.opacity = Math.random(); /* sets random transparency */
         snowContainer.appendChild(flake);
       }
     }
